@@ -8,7 +8,7 @@ class PizzaComponent:  # Component
         return self.__class__.cost
 
 
-class Dough(PizzaComponent):  # Concrete Component
+class Massa(PizzaComponent):  # Concrete Component
     cost = 15.00
 
 
@@ -30,14 +30,14 @@ class Calabresa(Decorator):  # Concrete DecoratorA
         Decorator.__init__(self, pizzaComponent)
 
 
-class Cheese(Decorator): # Concrete DecoratorB
+class Queijo(Decorator): # Concrete DecoratorB
     cost = 4.00
 
     def __init__(self, pizzaComponent):
         Decorator.__init__(self, pizzaComponent)
 
 
-class TomatoSauce(Decorator): # Concrete DecoratorC
+class MolhoDeTomate(Decorator): # Concrete DecoratorC
     cost = 3.00
 
     def __init__(self, pizzaComponent):
@@ -51,11 +51,11 @@ class Pepperoni(Decorator):
         Decorator.__init__(self, pizzaComponent)
 
 
-pepperoni_pizza = Pepperoni(Cheese(TomatoSauce(Dough())))
+pepperoni_pizza = Pepperoni(Queijo(MolhoDeTomate(Massa())))
 print(pepperoni_pizza.getDescription() + ": $" + str(pepperoni_pizza.getTotalCost()))
 
-calabresa_pizza = Calabresa(Cheese(TomatoSauce(Dough())))
+calabresa_pizza = Calabresa(Queijo(MolhoDeTomate(Massa())))
 print(calabresa_pizza.getDescription() + ": $" + str(calabresa_pizza.getTotalCost()))
 
-cheese_pizza = Cheese(TomatoSauce(Dough()))
+cheese_pizza = Queijo(MolhoDeTomate(Massa()))
 print(cheese_pizza.getDescription() + ": $" + str(cheese_pizza.getTotalCost()))
